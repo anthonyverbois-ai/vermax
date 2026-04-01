@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Tarifs from "@/components/Tarifs";
 import Blanchisserie from "@/components/Blanchisserie";
 import Infos from "@/components/Infos";
-import WhatsAppCTA from "@/components/WhatsAppCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
         <Infos />
       </main>
       <Footer />
-      <WhatsAppCTA />
     </>
   );
 }
