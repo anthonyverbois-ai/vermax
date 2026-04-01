@@ -2,7 +2,7 @@ export const BUSINESS = {
   name: "La Pause Laverie",
   tagline: "Votre laverie automatique à Compiègne",
   address: {
-    street: "75 Rue du Bataillon de France",
+    street: "77 Rue du Bataillon de France",
     city: "Compiègne",
     region: "Hauts-de-France",
     postalCode: "60200",
