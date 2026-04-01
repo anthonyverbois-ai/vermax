@@ -15,7 +15,7 @@ export default function Hero() {
       />
 
       {/* Dark green overlay */}
-      <div className="absolute inset-0 bg-primary-dark/75" />
+      <div className="absolute inset-0 bg-primary-dark/60" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 py-16">

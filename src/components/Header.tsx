@@ -21,9 +21,9 @@ export default function Header() {
           <Image
             src="/images/newlogo.png"
             alt={`Logo ${BUSINESS.name}`}
-            width={192}
-            height={77}
-            className="h-[4.2rem] w-auto object-contain"
+            width={173}
+            height={69}
+            className="h-[3.8rem] w-auto object-contain"
           />
         </a>
 
