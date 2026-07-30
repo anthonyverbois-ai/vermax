@@ -17,6 +17,7 @@ export const BUSINESS = {
     number: "33647428949",
     defaultMessage: "Bonjour, je souhaite des informations sur vos services.",
     pickupMessage: "Bonjour, je souhaite réserver un ramassage de linge.",
+    pmrMessage: "Information rampe d'accès PMR :",
   },
   pricing: {
     laverie: [

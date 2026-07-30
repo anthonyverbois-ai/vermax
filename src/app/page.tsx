@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Tarifs from "@/components/Tarifs";
 import Blanchisserie from "@/components/Blanchisserie";
 import Infos from "@/components/Infos";
+import PermanencePMR from "@/components/PermanencePMR";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -14,8 +15,10 @@ export default function Home() {
         <Tarifs />
         <Blanchisserie />
         <Infos />
+        <PermanencePMR />
       </main>
       <Footer />
     </>
   );
 }
+
