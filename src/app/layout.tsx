@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "La Pause Laverie — Laverie automatique à Compiègne",
   description:
-    "Laverie automatique à Compiègne. Machines grande capacité, lessive incluse. Service de blanchisserie et livraison à domicile. Ouvert 7j/7 de 7h à 23h.",
+    "Laverie automatique à Compiègne. Machines grande capacité, lessive incluse. Service de blanchisserie et livraison à domicile. Ouvert 7j/7 de 6h à 22h.",
   keywords: [
     "laverie",
     "Compiègne",
@@ -43,7 +43,7 @@ const jsonLd = {
   },
   telephone: BUSINESS.phoneDisplay,
   email: BUSINESS.email,
-  openingHours: "Mo-Su 07:00-23:00",
+  openingHours: "Mo-Su 06:00-22:00",
   priceRange: "€",
   geo: {
     "@type": "GeoCoordinates",

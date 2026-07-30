@@ -12,7 +12,7 @@ export const BUSINESS = {
   email: "sophiebuchaille@gmail.com",
   owner: "Sophie Buchaille",
   siret: "123 456 789 00012",
-  hours: "7h00 – 23h00, 7j/7",
+  hours: "6h00 – 22h00, 7j/7",
   whatsapp: {
     number: "33647428949",
     defaultMessage: "Bonjour, je souhaite des informations sur vos services.",
