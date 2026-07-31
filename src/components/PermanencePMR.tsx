@@ -47,6 +47,7 @@ export default function PermanencePMR() {
                   src="/images/logo-pmr.png"
                   alt="Rampe d'accès PMR - Amovible sur demande"
                   fill
+                  sizes="(max-width: 768px) 144px, 176px"
                   className="object-contain rounded-lg"
                 />
               </div>
