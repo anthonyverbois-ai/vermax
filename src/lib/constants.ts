@@ -19,6 +19,11 @@ export const BUSINESS = {
     pickupMessage: "Bonjour, je souhaite réserver un ramassage de linge.",
     pmrMessage: "Information rampe d'accès PMR :",
   },
+  instagram: {
+    url: "https://www.instagram.com/lapauselaverie/",
+    handle: "@lapauselaverie",
+    name: "la pause laverie",
+  },
   pricing: {
     laverie: [
       { label: "Lavage 10 kg", price: "6 €" },
