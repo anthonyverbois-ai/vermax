@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lapauselaverie.fr"),
   title: "La Pause Laverie — Laverie automatique à Compiègne",
   description:
     "Laverie automatique à Compiègne. Machines grande capacité, lessive incluse. Service de blanchisserie et livraison à domicile. Ouvert 7j/7 de 6h à 22h.",
@@ -20,12 +21,34 @@ export const metadata: Metadata = {
     "livraison linge",
     "pressing Compiègne",
   ],
+  icons: {
+    icon: "/images/newlogo.png",
+    shortcut: "/images/newlogo.png",
+    apple: "/images/newlogo.png",
+  },
   openGraph: {
     title: "La Pause Laverie — Votre laverie automatique à Compiègne",
     description:
       "Machines grande capacité, lessive incluse. Service blanchisserie et livraison dans un rayon de 10 km.",
-    type: "website",
+    url: "https://lapauselaverie.fr",
+    siteName: "La Pause Laverie",
     locale: "fr_FR",
+    type: "website",
+    images: [
+      {
+        url: "/images/newlogo.png",
+        width: 1200,
+        height: 630,
+        alt: "La Pause Laverie - Compiègne",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "La Pause Laverie — Votre laverie automatique à Compiègne",
+    description:
+      "Machines grande capacité, lessive incluse. Service blanchisserie et livraison dans un rayon de 10 km.",
+    images: ["/images/newlogo.png"],
   },
 };
 
