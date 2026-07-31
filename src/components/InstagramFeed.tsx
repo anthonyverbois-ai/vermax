@@ -66,6 +66,8 @@ const instagramPosts = [
 ];
 
 export default function InstagramFeed() {
+  const hasWidget = Boolean(BUSINESS.instagram.widgetIframeUrl);
+
   return (
     <section id="instagram" className="py-16 bg-gradient-to-b from-white to-secondary/30 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4">
@@ -73,7 +75,7 @@ export default function InstagramFeed() {
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-purple-600/10 border border-rose-500/20 text-rose-600 text-xs font-semibold uppercase tracking-wider">
             <InstagramIcon size={14} className="animate-pulse" />
-            <span>Feed Instagram</span>
+            <span>Feed Instagram en Direct</span>
           </div>
 
           <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">
@@ -121,65 +123,78 @@ export default function InstagramFeed() {
           </a>
         </div>
 
-        {/* Grille dynamique des publications */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {instagramPosts.map((post) => (
-            <a
-              key={post.id}
-              href={post.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative bg-white rounded-2xl overflow-hidden border border-secondary-dark/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1"
-              aria-label={`Voir la publication Instagram : ${post.caption}`}
-            >
-              {/* Photo avec Overlay au survol */}
-              <div className="relative aspect-square w-full bg-slate-100 overflow-hidden">
-                <Image
-                  src={post.imageUrl}
-                  alt={post.caption}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                
-                {/* Badge Tag */}
-                <div className="absolute top-3 left-3 z-10 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full border border-white/20">
-                  {post.tag}
-                </div>
+        {/* Affichage du Widget iFrame Live s'il est configuré */}
+        {hasWidget ? (
+          <div className="w-full rounded-2xl overflow-hidden shadow-sm border border-secondary-dark/30 bg-white p-2">
+            <iframe
+              src={BUSINESS.instagram.widgetIframeUrl}
+              className="w-full min-h-[450px] border-0 rounded-xl"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title="Feed Instagram La Pause Laverie en direct"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          /* En l'absence de lien iframe widget, afficher la grille avec bouton CTA direct */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {instagramPosts.map((post) => (
+              <a
+                key={post.id}
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-white rounded-2xl overflow-hidden border border-secondary-dark/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1"
+                aria-label={`Voir la publication Instagram : ${post.caption}`}
+              >
+                {/* Photo avec Overlay au survol */}
+                <div className="relative aspect-square w-full bg-slate-100 overflow-hidden">
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.caption}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  
+                  {/* Badge Tag */}
+                  <div className="absolute top-3 left-3 z-10 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full border border-white/20">
+                    {post.tag}
+                  </div>
 
-                {/* Overlay survol style Instagram */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4 text-white">
-                  <div className="flex justify-end">
-                    <div className="p-2 rounded-full bg-white/20 backdrop-blur-md">
-                      <ExternalLink size={16} />
+                  {/* Overlay survol style Instagram */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4 text-white">
+                    <div className="flex justify-end">
+                      <div className="p-2 rounded-full bg-white/20 backdrop-blur-md">
+                        <ExternalLink size={16} />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-center gap-6 font-semibold">
+                      <div className="flex items-center gap-1.5">
+                        <Heart size={20} className="fill-white text-white" />
+                        <span>{post.likes}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <MessageCircle size={20} className="fill-white text-white" />
+                        <span>{post.comments}</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center gap-6 font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <Heart size={20} className="fill-white text-white" />
-                      <span>{post.likes}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <MessageCircle size={20} className="fill-white text-white" />
-                      <span>{post.comments}</span>
-                    </div>
+                </div>
+
+                {/* Contenu de la publication */}
+                <div className="p-4 flex flex-col justify-between flex-1">
+                  <p className="text-xs text-text-dark line-clamp-2 leading-relaxed">
+                    {post.caption}
+                  </p>
+                  <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-rose-600 font-semibold group-hover:text-purple-600 transition-colors">
+                    <span>Voir sur Instagram</span>
+                    <InstagramIcon size={14} />
                   </div>
                 </div>
-              </div>
-
-              {/* Contenu de la publication */}
-              <div className="p-4 flex flex-col justify-between flex-1">
-                <p className="text-xs text-text-dark line-clamp-2 leading-relaxed">
-                  {post.caption}
-                </p>
-                <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-rose-600 font-semibold group-hover:text-purple-600 transition-colors">
-                  <span>Voir sur Instagram</span>
-                  <InstagramIcon size={14} />
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+              </a>
+            ))}
+          </div>
+        )}
 
         {/* Pied de section avec CTA */}
         <div className="mt-10 text-center">

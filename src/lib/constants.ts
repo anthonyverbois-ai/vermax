@@ -23,6 +23,7 @@ export const BUSINESS = {
     url: "https://www.instagram.com/lapauselaverie/",
     handle: "@lapauselaverie",
     name: "la pause laverie",
+    widgetIframeUrl: "", // Remplacez par le lien iframe LightWidget / Behold / Elfsight une fois créé
   },
   pricing: {
     laverie: [
