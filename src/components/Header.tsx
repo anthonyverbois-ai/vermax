@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Tarifs", href: "#tarifs" },
   { label: "Services", href: "#services" },
   { label: "Contact", href: "#contact" },
+  { label: "Accueil & PMR", href: "#permanence-pmr" },
 ];
 
 export default function Header() {
