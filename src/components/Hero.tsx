@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative flex items-center justify-center min-h-[70vh] md:min-h-[80vh]">
       {/* Background image */}
       <Image
-        src="/images/devanture.jpeg"
+        src="/images/main.jpg"
         alt="Devanture de La Pause Laverie à Compiègne"
         fill
         priority

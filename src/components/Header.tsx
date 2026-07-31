@@ -29,6 +29,7 @@ function InstagramIcon({ size = 20, className = "" }: { size?: number; className
 const navLinks = [
   { label: "Tarifs", href: "#tarifs" },
   { label: "Services", href: "#services" },
+  { label: "Nos Locaux", href: "#galerie" },
   { label: "Instagram", href: "#instagram" },
   { label: "Contact", href: "#contact" },
   { label: "Accueil & PMR", href: "#permanence-pmr" },

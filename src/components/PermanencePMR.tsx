@@ -24,7 +24,7 @@ export default function PermanencePMR() {
   )}`;
 
   return (
-    <section id="permanence-pmr" className="py-16 bg-white border-t border-secondary-dark/40">
+    <section id="permanence-pmr" className="py-16 md:py-20 bg-secondary border-t border-secondary-dark/30">
       <div className="max-w-5xl mx-auto px-4">
         {/* Titre de section aligné avec le reste du site */}
         <div className="text-center mb-10">
@@ -37,11 +37,11 @@ export default function PermanencePMR() {
         </div>
 
         {/* Carte principale reprenant exactement le style des cartes 'Tarifs' et 'Blanchisserie' */}
-        <div className="bg-secondary rounded-xl p-6 sm:p-8 shadow-sm border border-secondary-dark/50">
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-secondary-dark/40">
           <div className="grid md:grid-cols-12 gap-8 items-center">
             
             {/* Colonne Gauche : Logo Officiel PMR */}
-            <div className="md:col-span-4 flex flex-col items-center justify-center text-center p-4 bg-white rounded-xl border border-secondary-dark/40 shadow-xs">
+            <div className="md:col-span-4 flex flex-col items-center justify-center text-center p-4 bg-secondary rounded-xl border border-secondary-dark/30 shadow-xs">
               <div className="relative w-36 h-36 sm:w-44 sm:h-44 mb-3">
                 <Image
                   src="/images/logo-pmr.png"
@@ -119,7 +119,7 @@ export default function PermanencePMR() {
               </div>
 
               {/* Information collecte & livraison */}
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-white/80 border border-secondary-dark/40">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-secondary/60 border border-secondary-dark/30">
                 <div className="bg-primary/10 text-primary p-2 rounded-lg shrink-0 mt-0.5">
                   <Info size={18} aria-hidden="true" />
                 </div>

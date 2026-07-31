@@ -25,7 +25,7 @@ function InstagramIcon({ size = 22, className = "" }: { size?: number; className
 
 export default function Infos() {
   return (
-    <section id="contact" className="py-16 bg-secondary">
+    <section id="contact" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className="text-3xl font-semibold text-text-dark text-center mb-10">
           Nous trouver

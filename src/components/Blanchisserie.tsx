@@ -28,7 +28,7 @@ export default function Blanchisserie() {
   )}`;
 
   return (
-    <section id="services" className="py-16 bg-white">
+    <section id="services" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30">
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-semibold text-text-dark mb-3">
