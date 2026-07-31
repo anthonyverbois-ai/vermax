@@ -1,6 +1,5 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
 import Image from "next/image";
 import { BUSINESS } from "@/lib/constants";
 
@@ -29,68 +28,61 @@ export default function InstagramFeed() {
   const hasWidget = Boolean(BUSINESS.instagram.widgetIframeUrl);
 
   return (
-    <section id="instagram" className="py-16 bg-gradient-to-b from-white to-secondary/30 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4">
-        {/* En-tête de section */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-purple-600/10 border border-rose-500/20 text-rose-600 text-xs font-bold uppercase tracking-wider">
-            <InstagramIcon size={14} className="animate-pulse" />
-            <span>Feed Instagram en Direct</span>
-          </div>
-
-          <h2 className="text-3xl font-extrabold text-text-dark sm:text-4xl tracking-tight">
+    <section id="instagram" className="py-16 bg-white border-t border-secondary-dark/40">
+      <div className="max-w-5xl mx-auto px-4">
+        {/* Titre de section parfaitement aligné sur la charte globale du site */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-semibold text-text-dark mb-2">
             Suivez-nous sur Instagram
           </h2>
-
-          <p className="text-text-light text-base leading-relaxed">
-            Plongez dans les coulisses de <strong>{BUSINESS.name}</strong>, découvrez nos astuces entretien du linge et restez informé des actualités à Compiègne.
+          <p className="text-text-light text-base max-w-xl mx-auto">
+            Plongez dans les coulisses de La Pause Laverie !
           </p>
         </div>
 
-        {/* Carte Profil Instagram (Style épuré & élégant) */}
-        <div className="bg-white rounded-3xl p-8 shadow-lg shadow-rose-500/5 border border-slate-200/80 max-w-lg mx-auto text-center space-y-5 transition-all hover:shadow-xl hover:shadow-rose-500/10">
-          {/* Avatar avec cercle dégradé Instagram */}
-          <div className="relative inline-block p-1 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600">
+        {/* Carte Profil Instagram reprenant le style des cartes du site (Tarifs / PMR) */}
+        <div className="bg-secondary rounded-xl p-6 sm:p-8 shadow-sm border border-secondary-dark/50 max-w-xl mx-auto text-center space-y-5">
+          {/* Avatar avec cercle d'accentuation */}
+          <div className="relative inline-block p-1 rounded-full bg-primary/10 border border-primary/20">
             <div className="bg-white p-1 rounded-full">
               <Image
                 src="/images/newlogo.png"
                 alt={BUSINESS.name}
-                width={80}
-                height={80}
-                className="rounded-full object-cover h-20 w-20 bg-secondary"
+                width={72}
+                height={72}
+                className="rounded-full object-cover h-18 w-18 bg-white"
               />
             </div>
           </div>
 
           {/* Nom & Infos */}
           <div className="space-y-1">
-            <div className="flex items-center justify-center gap-1.5">
-              <h3 className="font-extrabold text-text-dark text-xl sm:text-2xl">{BUSINESS.instagram.name}</h3>
-              <Sparkles size={18} className="text-amber-500 fill-amber-500" />
-            </div>
-            <p className="text-sm font-semibold text-text-light">{BUSINESS.instagram.handle}</p>
-            <p className="text-xs text-text-light/80 pt-1">Laverie libre-service & Blanchisserie • Compiègne</p>
+            <h3 className="font-semibold text-text-dark text-xl sm:text-2xl">{BUSINESS.instagram.name}</h3>
+            <p className="text-sm font-medium text-primary">{BUSINESS.instagram.handle}</p>
+            <p className="text-xs text-text-light pt-1">Laverie libre-service &amp; Blanchisserie • Compiègne</p>
           </div>
 
-          {/* Bouton S'abonner large */}
-          <a
-            href={BUSINESS.instagram.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-bold text-base text-white bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 hover:opacity-95 transition-all shadow-md shadow-rose-500/25 hover:shadow-lg hover:shadow-rose-500/35 active:scale-98"
-            aria-label="S'abonner à La Pause Laverie sur Instagram"
-          >
-            <InstagramIcon size={20} />
-            <span>S'abonner</span>
-          </a>
+          {/* Bouton S'abonner respectant le style bouton principal (Primary) du site */}
+          <div className="pt-2">
+            <a
+              href={BUSINESS.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-medium text-sm px-6 py-3 rounded-xl transition-colors shadow-xs w-full sm:w-auto"
+              aria-label="S'abonner à La Pause Laverie sur Instagram"
+            >
+              <InstagramIcon size={18} />
+              <span>S&apos;abonner sur Instagram</span>
+            </a>
+          </div>
         </div>
 
         {/* Affichage optionnel du Widget iFrame uniquement s'il est configuré */}
         {hasWidget && (
-          <div className="mt-10 w-full rounded-2xl overflow-hidden shadow-sm border border-secondary-dark/30 bg-white p-2">
+          <div className="mt-10 w-full rounded-xl overflow-hidden shadow-sm border border-secondary-dark/50 bg-white p-2">
             <iframe
               src={BUSINESS.instagram.widgetIframeUrl}
-              className="w-full min-h-[450px] border-0 rounded-xl"
+              className="w-full min-h-[450px] border-0 rounded-lg"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               title="Feed Instagram La Pause Laverie en direct"
               loading="lazy"
