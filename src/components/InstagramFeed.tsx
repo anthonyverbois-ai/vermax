@@ -52,7 +52,7 @@ export default function InstagramFeed() {
                 alt={BUSINESS.name}
                 width={80}
                 height={80}
-                className="rounded-full object-cover h-20 w-20 bg-secondary"
+                className="rounded-full object-contain h-20 w-20"
               />
             </div>
           </div>
