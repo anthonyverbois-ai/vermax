@@ -27,11 +27,11 @@ const BANDE = 56;
 
 // [zone, nombre sur ordinateur, dont nombre sur mobile, taille min, taille max]
 const REPARTITION: [Zone, number, number, number, number][] = [
-  ["gauche", 9, 5, 14, 110],
-  ["droite", 9, 5, 14, 110],
-  ["haut", 5, 4, 12, 50],
-  ["bas", 5, 4, 12, 50],
-  ["frontiere", 9, 6, 16, 80],
+  ["gauche", 7, 4, 14, 110],
+  ["droite", 7, 4, 14, 110],
+  ["haut", 4, 3, 12, 50],
+  ["bas", 4, 3, 12, 50],
+  ["frontiere", 7, 5, 16, 80],
 ];
 
 // Générateur pseudo-aléatoire déterministe : même disposition à chaque rendu.
