@@ -1,5 +1,6 @@
 import { WashingMachine, Layers, Truck, type LucideProps } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
+import CarteFidelite from "./CarteFidelite";
 
 // Lucide n'a pas de fer à repasser : icône maison dans le même style (trait 2px, grille 24).
 function Iron({ size = 24, ...props }: LucideProps) {
@@ -78,6 +79,8 @@ export default function Blanchisserie() {
             Réserver un ramassage
           </a>
         </div>
+
+        <CarteFidelite />
       </div>
     </section>
   );
