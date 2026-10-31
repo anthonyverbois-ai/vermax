@@ -1,11 +1,14 @@
 // Bulles de savon décoratives en arrière-plan des sections.
 // Elles occupent le « cadre » autour du contenu, jamais la zone de texte :
 // - marges gauche et droite (à côté de la colonne de contenu de 1024 px),
-// - bande vide au-dessus du titre et sous le contenu de la section.
+// - bande vide au-dessus du titre et sous le contenu de la section,
+// - frontière avec la section précédente (bulles à cheval sur les deux).
+// Le calque n'est pas rogné : une bulle peut déborder sur la section voisine.
+// Il passe au-dessus des fonds de section (z-[1]) et sous le contenu (z-10).
 
 import type { CSSProperties } from "react";
 
-type Zone = "gauche" | "droite" | "haut" | "bas";
+type Zone = "gauche" | "droite" | "haut" | "bas" | "frontiere";
 
 type Bulle = {
   zone: Zone;
@@ -26,8 +29,9 @@ const BANDE = 56;
 const REPARTITION: [Zone, number, number, number, number][] = [
   ["gauche", 9, 5, 14, 110],
   ["droite", 9, 5, 14, 110],
-  ["haut", 7, 6, 12, 50],
-  ["bas", 7, 6, 12, 50],
+  ["haut", 5, 4, 12, 50],
+  ["bas", 5, 4, 12, 50],
+  ["frontiere", 9, 6, 16, 80],
 ];
 
 // Générateur pseudo-aléatoire déterministe : même disposition à chaque rendu.
@@ -77,6 +81,12 @@ function position(b: Bulle): CSSProperties {
       return { top: `${b.u * 100}%`, right: `calc(${GOUTTIERE} * ${b.v} - ${demi}px)` };
     case "haut":
       return { top: `${Math.max(0, BANDE - b.size) * b.v}px`, left: `calc(${b.u * 100}% - ${demi}px)` };
+    case "frontiere":
+      // Centrée sur la limite haute de la section, dans les marges vides des deux sections
+      return {
+        top: `${Math.round(-demi + (b.v - 0.5) * 24)}px`,
+        left: `calc(${b.u * 100}% - ${demi}px)`,
+      };
     case "bas":
       return {
         top: `calc(100% - ${BANDE}px + ${Math.max(0, BANDE - b.size) * b.v}px)`,
@@ -87,11 +97,14 @@ function position(b: Bulle): CSSProperties {
 
 const DISPOSITIONS = [11, 23, 37, 41, 59, 67].map(disposition);
 
+// variante 0 = première section sous l'en-tête : pas de bulles à cheval sur la photo
 export default function Bulles({ variante = 0 }: { variante?: number }) {
-  const bulles = DISPOSITIONS[variante % DISPOSITIONS.length];
+  const bulles = DISPOSITIONS[variante % DISPOSITIONS.length].filter(
+    (b) => variante > 0 || b.zone !== "frontiere"
+  );
 
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
       {bulles.map((b, i) => (
         <span
           key={i}

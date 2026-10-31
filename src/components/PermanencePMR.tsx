@@ -25,9 +25,9 @@ export default function PermanencePMR() {
   )}`;
 
   return (
-    <section id="permanence-pmr" className="py-16 md:py-20 bg-secondary border-t border-secondary-dark/30 relative overflow-hidden">
+    <section id="permanence-pmr" className="py-16 md:py-20 bg-secondary border-t border-secondary-dark/30 relative">
       <Bulles variante={4} />
-      <div className="relative max-w-5xl mx-auto px-4">
+      <div className="relative z-10 max-w-5xl mx-auto px-4">
         {/* Titre de section aligné avec le reste du site */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-semibold text-text-dark mb-2">

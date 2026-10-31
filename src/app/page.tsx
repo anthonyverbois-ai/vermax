@@ -12,7 +12,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      {/* overflow-x-clip : les bulles qui dépassent sur les côtés ne créent pas de défilement horizontal */}
+      <main className="overflow-x-clip">
         <Hero />
         <Tarifs />
         <Blanchisserie />

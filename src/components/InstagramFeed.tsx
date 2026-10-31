@@ -30,9 +30,9 @@ export default function InstagramFeed() {
   const hasWidget = Boolean(BUSINESS.instagram.widgetIframeUrl);
 
   return (
-    <section id="instagram" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30 relative overflow-hidden">
+    <section id="instagram" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30 relative">
       <Bulles variante={5} />
-      <div className="relative max-w-5xl mx-auto px-4">
+      <div className="relative z-10 max-w-5xl mx-auto px-4">
         {/* En-tête de section (sans le badge "Feed Instagram en direct") */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <h2 className="text-3xl font-extrabold text-text-dark sm:text-4xl tracking-tight">

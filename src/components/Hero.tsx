@@ -3,7 +3,7 @@ import { BUSINESS } from "@/lib/constants";
 
 export default function Hero() {
   return (
-    <section className="relative flex items-center justify-center min-h-[70vh] md:min-h-[80vh]">
+    <section className="relative z-10 flex items-center justify-center min-h-[70vh] md:min-h-[80vh]">
       {/* Background image */}
       <Image
         src="/images/main.jpg"
