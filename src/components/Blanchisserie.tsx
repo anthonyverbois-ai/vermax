@@ -1,25 +1,33 @@
-import { Shirt, Truck, Clock } from "lucide-react";
+import { WashingMachine, Layers, Truck, type LucideProps } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
 
-const features = [
-  {
-    icon: Shirt,
-    title: "Linge pris en charge",
-    description:
-      "Couettes, draps, serviettes ou linge de maison — nous nous occupons de tout.",
-  },
-  {
-    icon: Truck,
-    title: "Ramassage & livraison",
-    description:
-      "Nous assurons le ramassage et la livraison à domicile dans un rayon de 10 km.",
-  },
-  {
-    icon: Clock,
-    title: "Vous gagnez du temps",
-    description:
-      "Retrouvez votre linge propre, frais et prêt à être utilisé, sans vous déplacer.",
-  },
+// Lucide n'a pas de fer à repasser : icône maison dans le même style (trait 2px, grille 24).
+function Iron({ size = 24, ...props }: LucideProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M3 18h18v-3.5a4.5 4.5 0 0 0-4.5-4.5H10C6.1 10 3 13.6 3 18z" />
+      <path d="M10 10V7a1 1 0 0 1 1-1h7.5a2 2 0 0 1 2 2v3.6" />
+      <path d="M7 14h.01" />
+    </svg>
+  );
+}
+
+const services = [
+  { icon: WashingMachine, title: "Lavage" },
+  { icon: Iron, title: "Repassage" },
+  { icon: Layers, title: "Pliage" },
+  { icon: Truck, title: "Ramassage & livraison" },
 ];
 
 export default function Blanchisserie() {
@@ -31,29 +39,24 @@ export default function Blanchisserie() {
     <section id="services" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30">
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-semibold text-text-dark mb-3">
+          <h2 className="text-3xl font-semibold text-text-dark">
             Service blanchisserie &amp; livraison
           </h2>
-          <p className="text-text-light text-base md:text-lg max-w-xl mx-auto">
-            Nous prenons soin de votre linge du quotidien, de la collecte jusqu&apos;à la
-            livraison à votre porte.
-          </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-5 mb-10">
-          {features.map(({ icon: Icon, title, description }) => (
-            <div
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-10">
+          {services.map(({ icon: Icon, title }) => (
+            <li
               key={title}
-              className="bg-secondary rounded-xl p-6 flex flex-col items-center text-center gap-3"
+              className="bg-secondary rounded-xl px-4 py-6 flex flex-col items-center text-center gap-3"
             >
-              <div className="bg-primary/10 text-primary rounded-full p-3">
-                <Icon size={24} aria-hidden="true" />
+              <div className="bg-primary/10 text-primary rounded-full p-4">
+                <Icon size={32} aria-hidden="true" />
               </div>
               <h3 className="font-semibold text-text-dark">{title}</h3>
-              <p className="text-text-light text-sm leading-relaxed">{description}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="text-center">
           <a
