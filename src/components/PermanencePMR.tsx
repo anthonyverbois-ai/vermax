@@ -3,6 +3,7 @@
 import { Clock, Phone, Info } from "lucide-react";
 import Image from "next/image";
 import { BUSINESS } from "@/lib/constants";
+import Bulles from "./Bulles";
 
 function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -24,8 +25,9 @@ export default function PermanencePMR() {
   )}`;
 
   return (
-    <section id="permanence-pmr" className="py-16 md:py-20 bg-secondary border-t border-secondary-dark/30">
-      <div className="max-w-5xl mx-auto px-4">
+    <section id="permanence-pmr" className="py-16 md:py-20 bg-secondary border-t border-secondary-dark/30 relative overflow-hidden">
+      <Bulles variante={4} />
+      <div className="relative max-w-5xl mx-auto px-4">
         {/* Titre de section aligné avec le reste du site */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-semibold text-text-dark mb-2">

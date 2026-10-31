@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import Map from "./Map";
 import { BUSINESS } from "@/lib/constants";
+import Bulles from "./Bulles";
 
 function InstagramIcon({ size = 22, className = "" }: { size?: number; className?: string }) {
   return (
@@ -25,8 +26,9 @@ function InstagramIcon({ size = 22, className = "" }: { size?: number; className
 
 export default function Infos() {
   return (
-    <section id="contact" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30">
-      <div className="max-w-5xl mx-auto px-4">
+    <section id="contact" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30 relative overflow-hidden">
+      <Bulles variante={3} />
+      <div className="relative max-w-5xl mx-auto px-4">
         <h2 className="text-3xl font-semibold text-text-dark text-center mb-10">
           Nous trouver
         </h2>

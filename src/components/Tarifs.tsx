@@ -1,5 +1,6 @@
 import { WashingMachine, Truck } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
+import Bulles from "./Bulles";
 
 function TarifRow({ label, price }: { label: string; price: string }) {
   return (
@@ -12,8 +13,9 @@ function TarifRow({ label, price }: { label: string; price: string }) {
 
 export default function Tarifs() {
   return (
-    <section id="tarifs" className="py-16 md:py-20 bg-secondary">
-      <div className="max-w-5xl mx-auto px-4">
+    <section id="tarifs" className="py-16 md:py-20 bg-secondary relative overflow-hidden">
+      <Bulles variante={0} />
+      <div className="relative max-w-5xl mx-auto px-4">
         <h2 className="text-3xl font-semibold text-text-dark text-center mb-10">
           Nos tarifs
         </h2>

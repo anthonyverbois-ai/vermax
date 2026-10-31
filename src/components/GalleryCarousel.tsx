@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Maximize2, X, Pause, Play } from "lucide-react";
+import Bulles from "./Bulles";
 
 const IMAGES = [
   {
@@ -88,8 +89,9 @@ export default function GalleryCarousel() {
   };
 
   return (
-    <section id="galerie" className="py-16 md:py-20 bg-secondary border-t border-secondary-dark/30">
-      <div className="max-w-5xl mx-auto px-4">
+    <section id="galerie" className="py-16 md:py-20 bg-secondary border-t border-secondary-dark/30 relative overflow-hidden">
+      <Bulles variante={2} />
+      <div className="relative max-w-5xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-semibold text-text-dark mb-3">
             Nos Locaux

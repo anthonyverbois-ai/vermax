@@ -1,6 +1,7 @@
 import { WashingMachine, Layers, Truck, type LucideProps } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
 import CarteFidelite from "./CarteFidelite";
+import Bulles from "./Bulles";
 
 // Lucide n'a pas de fer à repasser : icône maison dans le même style (trait 2px, grille 24).
 function Iron({ size = 24, ...props }: LucideProps) {
@@ -37,8 +38,9 @@ export default function Blanchisserie() {
   )}`;
 
   return (
-    <section id="services" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30">
-      <div className="max-w-5xl mx-auto px-4">
+    <section id="services" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30 relative overflow-hidden">
+      <Bulles variante={1} />
+      <div className="relative max-w-5xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-semibold text-text-dark">
             Service blanchisserie &amp; livraison

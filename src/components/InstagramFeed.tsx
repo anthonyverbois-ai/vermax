@@ -3,6 +3,7 @@
 import { Sparkles } from "lucide-react";
 import Image from "next/image";
 import { BUSINESS } from "@/lib/constants";
+import Bulles from "./Bulles";
 
 function InstagramIcon({ size = 20, className = "" }: { size?: number; className?: string }) {
   return (
@@ -30,7 +31,8 @@ export default function InstagramFeed() {
 
   return (
     <section id="instagram" className="py-16 md:py-20 bg-white border-t border-secondary-dark/30 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4">
+      <Bulles variante={5} />
+      <div className="relative max-w-5xl mx-auto px-4">
         {/* En-tête de section (sans le badge "Feed Instagram en direct") */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <h2 className="text-3xl font-extrabold text-text-dark sm:text-4xl tracking-tight">
