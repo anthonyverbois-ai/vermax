@@ -1,41 +1,91 @@
 // Bulles de savon décoratives en arrière-plan des sections.
-// Placées surtout sur les bords, derrière le contenu : les cartes (fond plein) les masquent.
+// Elles occupent le « cadre » autour du contenu, jamais la zone de texte :
+// - marges gauche et droite (à côté de la colonne de contenu de 1024 px),
+// - bande vide au-dessus du titre et sous le contenu de la section.
+
+import type { CSSProperties } from "react";
+
+type Zone = "gauche" | "droite" | "haut" | "bas";
 
 type Bulle = {
+  zone: Zone;
   size: number; // px
-  top: string;
-  left?: string;
-  right?: string;
+  u: number; // position 0–1 le long de la zone
+  v: number; // position 0–1 en travers de la zone
   delay: number; // s
   duration: number; // s
-  desktopOnly?: boolean;
+  mobile: boolean; // affichée aussi sur mobile
 };
 
-const DISPOSITIONS: Bulle[][] = [
-  [
-    { size: 90, top: "8%", left: "-28px", delay: 0, duration: 9 },
-    { size: 34, top: "30%", left: "4%", delay: 1.5, duration: 7, desktopOnly: true },
-    { size: 18, top: "44%", left: "9%", delay: 3, duration: 6, desktopOnly: true },
-    { size: 60, top: "62%", right: "-18px", delay: 0.8, duration: 10 },
-    { size: 26, top: "14%", right: "6%", delay: 2.2, duration: 8, desktopOnly: true },
-    { size: 120, top: "72%", left: "3%", delay: 4, duration: 12, desktopOnly: true },
-  ],
-  [
-    { size: 70, top: "10%", right: "-22px", delay: 0.5, duration: 9 },
-    { size: 22, top: "26%", right: "7%", delay: 2, duration: 6.5, desktopOnly: true },
-    { size: 110, top: "50%", right: "2%", delay: 3.5, duration: 12, desktopOnly: true },
-    { size: 48, top: "70%", left: "-14px", delay: 1, duration: 8 },
-    { size: 30, top: "20%", left: "5%", delay: 2.8, duration: 7.5, desktopOnly: true },
-    { size: 16, top: "84%", left: "10%", delay: 0.3, duration: 6, desktopOnly: true },
-  ],
-  [
-    { size: 54, top: "6%", left: "6%", delay: 1.2, duration: 8.5, desktopOnly: true },
-    { size: 100, top: "34%", left: "-36px", delay: 0, duration: 11 },
-    { size: 20, top: "58%", left: "8%", delay: 2.5, duration: 6, desktopOnly: true },
-    { size: 80, top: "18%", right: "3%", delay: 3, duration: 10, desktopOnly: true },
-    { size: 36, top: "78%", right: "-10px", delay: 1.8, duration: 7.5 },
-  ],
+// Largeur de la marge latérale : espace hors colonne de contenu + padding (16 px)
+const GOUTTIERE = "((100% - min(1024px, 100%)) / 2 + 16px)";
+// Hauteur des bandes vides en haut et en bas de section (py-16 = 64 px)
+const BANDE = 56;
+
+// [zone, nombre sur ordinateur, dont nombre sur mobile, taille min, taille max]
+const REPARTITION: [Zone, number, number, number, number][] = [
+  ["gauche", 9, 5, 14, 110],
+  ["droite", 9, 5, 14, 110],
+  ["haut", 7, 6, 12, 50],
+  ["bas", 7, 6, 12, 50],
 ];
+
+// Générateur pseudo-aléatoire déterministe : même disposition à chaque rendu.
+function aleatoire(graine: number) {
+  let a = graine;
+  return () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const arrondi = (n: number) => Math.round(n * 100) / 100;
+
+function disposition(graine: number): Bulle[] {
+  const r = aleatoire(graine);
+  return REPARTITION.flatMap(([zone, nombre, nbMobile, min, max]) =>
+    Array.from({ length: nombre }, (_, i) => {
+      // Bulles affichées sur mobile réparties régulièrement le long de la zone
+      const mobile = Math.floor(((i + 1) * nbMobile) / nombre) > Math.floor((i * nbMobile) / nombre);
+      const cote = zone === "gauche" || zone === "droite";
+      const t = r();
+      // Sur mobile, bulles latérales moyennes, à moitié hors de l'écran (marge de 16 px)
+      const size = mobile && cote ? 30 + t * 26 : min + (max - min) * (t < 0.6 ? t * 0.5 : t);
+      const v = r();
+      return {
+        zone,
+        size: Math.round(size),
+        u: arrondi((i + 0.15 + r() * 0.7) / nombre),
+        v: arrondi(mobile && cote ? v * 0.25 : v),
+        delay: arrondi(r() * 8),
+        duration: arrondi(7 + r() * 6),
+        mobile,
+      };
+    })
+  );
+}
+
+function position(b: Bulle): CSSProperties {
+  const demi = b.size / 2;
+  switch (b.zone) {
+    case "gauche":
+      return { top: `${b.u * 100}%`, left: `calc(${GOUTTIERE} * ${b.v} - ${demi}px)` };
+    case "droite":
+      return { top: `${b.u * 100}%`, right: `calc(${GOUTTIERE} * ${b.v} - ${demi}px)` };
+    case "haut":
+      return { top: `${Math.max(0, BANDE - b.size) * b.v}px`, left: `calc(${b.u * 100}% - ${demi}px)` };
+    case "bas":
+      return {
+        top: `calc(100% - ${BANDE}px + ${Math.max(0, BANDE - b.size) * b.v}px)`,
+        left: `calc(${b.u * 100}% - ${demi}px)`,
+      };
+  }
+}
+
+const DISPOSITIONS = [11, 23, 37, 41, 59, 67].map(disposition);
 
 export default function Bulles({ variante = 0 }: { variante?: number }) {
   const bulles = DISPOSITIONS[variante % DISPOSITIONS.length];
@@ -45,12 +95,10 @@ export default function Bulles({ variante = 0 }: { variante?: number }) {
       {bulles.map((b, i) => (
         <span
           key={i}
-          className={`bulle${b.desktopOnly ? " hidden md:block" : ""}`}
+          className={`bulle${b.mobile ? "" : " hidden md:block"}`}
           style={{
             ["--taille" as string]: `${b.size}px`,
-            top: b.top,
-            left: b.left,
-            right: b.right,
+            ...position(b),
             animationDelay: `-${b.delay}s`,
             animationDuration: `${b.duration}s`,
           }}
