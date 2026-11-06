@@ -21,11 +21,11 @@
 
 ## En bref
 
-**La Pause Laverie** est une laverie automatique indépendante à Compiègne, qui propose aussi un service de blanchisserie avec ramassage et livraison. La gérante avait besoin d'une présence en ligne simple : qu'un habitant du quartier trouve en quelques secondes les horaires, les tarifs, l'adresse, et puisse la contacter sans friction.
+**La Pause Laverie** est une laverie automatique indépendante à Compiègne, qui propose aussi un service de blanchisserie avec ramassage et livraison. Elle est tenue par une personne de ma famille, qui avait besoin d'une présence en ligne simple : qu'un habitant du quartier trouve en quelques secondes les horaires, les tarifs, l'adresse, et puisse la contacter sans friction.
 
-Ce dépôt contient le code du site, en production depuis 2026. Je l'ai pris en charge de bout en bout : cadrage du besoin avec la cliente, choix des fonctionnalités, conception, mise en ligne, puis évolutions au fil de ses demandes.
+C'est un projet fait en famille, sans contrat ni facture, mais traité comme un vrai produit. Ce dépôt contient le code du site, en production depuis 2026. Je l'ai pris en charge de bout en bout : cadrage du besoin, choix des fonctionnalités, conception, mise en ligne, puis évolutions au fil de ses demandes.
 
-> **Pourquoi ce projet est sur mon GitHub** : je suis Product Manager, pas développeur. Ce site montre comment je mène un produit du besoin réel jusqu'à la mise en production, en m'appuyant sur des outils d'IA (Claude Code) pour l'implémentation, avec une vraie cliente, de vrais utilisateurs et un vrai suivi.
+> **Pourquoi ce projet est sur mon GitHub** : je suis Product Manager, pas développeur. Ce site montre comment je mène un produit du besoin réel jusqu'à la mise en production, en m'appuyant sur des outils d'IA (Claude Code) pour l'implémentation, pour un vrai commerce, avec de vrais utilisateurs et un vrai suivi.
 
 ## Ce que le site permet de faire
 
@@ -49,7 +49,7 @@ Ce dépôt contient le code du site, en production depuis 2026. Je l'ai pris en 
 
 ## Comment je fais vivre le produit
 
-1. La gérante m'envoie ses demandes (nouveau tarif, horaire, photo, nouvelle section…).
+1. La gérante m'envoie ses idées et ses demandes par mail (nouveau tarif, horaire, photo, nouvelle section…).
 2. Je les reformule en besoin, je priorise et je décide de la solution.
 3. L'implémentation est faite avec Claude Code, sur une branche séparée.
 4. Je relis et je valide avant toute mise en ligne.
