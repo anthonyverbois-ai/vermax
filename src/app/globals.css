@@ -5,9 +5,6 @@
   --color-primary-dark: #3A6147;
   --color-secondary: #F5F0E8;
   --color-secondary-dark: #E8E0D0;
-  --color-accent: #8A6634; /* prix « repassé » (brun doré, contraste AA sur blanc) */
-  --color-accent-light: #F3E9DA;
-  --color-primary-light: #E6EFE8;
   --color-text-dark: #2D2D2D;
   --color-text-light: #6B7280;
   --font-sans: var(--font-inter);

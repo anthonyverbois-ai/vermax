@@ -68,9 +68,9 @@ export const BUSINESS = {
       { label: "Robe", plie: "8 €", repasse: null },
     ],
     forfaits: [
-      { name: "Petite panière", court: "Petite", poids: "Jusqu'à 3 kg", plie: "15 €", repasse: "25 €" },
-      { name: "Panière moyenne", court: "Moyenne", poids: "Jusqu'à 5 kg", plie: "25 €", repasse: "40 €" },
-      { name: "Grande panière", court: "Grande", poids: "Jusqu'à 8 kg", plie: "35 €", repasse: "55 €" },
+      { name: "Petite panière", poids: "Jusqu'à 3 kg", plie: "15 €", repasse: "25 €" },
+      { name: "Panière moyenne", poids: "Jusqu'à 5 kg", plie: "25 €", repasse: "40 €" },
+      { name: "Grande panière", poids: "Jusqu'à 8 kg", plie: "35 €", repasse: "55 €" },
     ],
   },
 } as const;
